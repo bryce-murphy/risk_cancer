@@ -14,10 +14,12 @@ library(tidyr)
 library(maps)
 library(mapdata)
 library(ggplot2)
+library(RCurl)
 
+path <- getURL("https://raw.githubusercontent.com/bryce-murphy/risk_cancer/master/risk_cancer.csv")
 
 risk_cancer <- 
-  read_csv("C:/Users/Bryce/Desktop/UMN/PUBH_7462/murp1142/HMW7/risk_cancer.csv") %>%
+  read_csv(path) %>%
   rename(region = State)
 
 risk_cancer$region <- tolower(risk_cancer$region)
